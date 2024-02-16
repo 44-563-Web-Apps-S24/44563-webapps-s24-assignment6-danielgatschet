@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Apples page</title>
+        <title>Animals page</title>
         <h1>Animal Game by Daniel Gatschet</h1>
     </head>
     <body>
@@ -9,33 +9,38 @@
     <h2>Getting input</h2>
 
     <form>
-        <label for="form1_age">What is your age </label>
-        <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-        <label for="form1_nick">What is your nickname </label>
-        <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-        <input type="button" onclick="resolveForm()" value="Get values from form">
+        <input type="password" id="hiddenAnimal" value="Chicken">
+        <label>The hidden animal type</label>
+        <br>
+        <input type="text" id="guessValue">
+        <label>Guess the animal</label>
+        <br>
+        <input type="button" value="Check the guess" onclick="checkAnimal()">
     </form>
 
 
-    <p id="result">This text will be replaced </p>
+    <p id="result">This is result text</p>
 
-    <script> 
+    <script>
+        let wrong = 0
+        let correct = 0
 
-    function resolveForm (){
-        console.log("Getting form values")
-        age = document.getElementById("form1_age").value
-        nick = document.getElementById("form1_nick").value
-        confirmed = confirm("Are these the values? "+age+" and "+nick)
-        
-        out = document.getElementById("result")
-        if(confirmed){
-            out.innerHTML = "Values were confirmed"
-        } else {
-            out.innerHTML = "Values were not confirmed"
+        function checkAnimal(){
+            console.log("Getting form values")
+            animal = document.getElementById("hiddenAnimal").value
+            guess = document.getElementById("guessValue").value
+
+            out = document.getElementById("result")
+            if(animal.localeCompare(guess)){
+                wrong += 1
+                alert("Grrrr!");
+            }
+            else{
+                correct += 1
+                alert("Ruff Ruff");
+            }
+            out.innerHTML = "Correct: " + correct + " Wrong: " + wrong
         }
-    }
     </script>
 
     </body>
