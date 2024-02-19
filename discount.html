@@ -20,9 +20,23 @@
         <br>
         <input type="button" value="Show total" onclick="discount()">
     </form>
+    
+    <br>
+    <form>
+        <input type="radio" value="Sum" name="action" id="sum" onclick="chooseOp(id)">
+        <label>Sum</label><br>
+
+        <input type="radio" value="Mult" name="action" id="mult" onclick="chooseOp(id)">
+        <label>Mult</label><br>
+
+        <input type="radio" value="Exponent" name="action" id="exp" onclick="chooseOp(id)">
+        <label>Exp</label>
+    </form>
 
 
     <p id="result">This text will be replaced </p>
+    <br>
+    <p id="radioResult">This text will be replaced</p>
 
     <script>
         function discount(){
@@ -43,5 +57,13 @@
         }
     </script>
 
+    <script>
+
+        function chooseOp(id){
+            price = document.getElementById("price").value
+            discountNum = document.getElementById("reductions").value
+
+        }
+    </script>
 </body>
 </html> 
