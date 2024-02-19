@@ -42,6 +42,29 @@
             out.innerHTML = "Correct: " + correct + " Wrong: " + wrong
         }
     </script>
+    <div>
+        <img src="coke.jpg" style="width: 150px; height: 150px;" onclick="selectImage()" id="img">
+    </div>
+    <script>
+        let useImage = 1
+
+        function selectImage(){
+            switch(useImage){
+                case 1:
+                    useImage = 2
+                    document.getElementById("img").src="hot chocolate.jpg"
+                    break
+                case 2:
+                    useImage = 3
+                    document.getElementById("img").src="apple juice.jpg"
+                    break
+                case 3:
+                    useImage = 1
+                    document.getElementById("img").src="coke.jpg"
+                    break
+            }
+        }
+    </script>
 
     </body>
 </html> 

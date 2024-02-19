@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Welcome to the discount page!</title>
+    <h1>Discount page</h1>
+ </head>
+<body>
+
+    <h2>Getting input</h2>
+
+    <form>
+        <input type="number" value="10" id="price">
+        <label>Enter price per</label>
+        <br>
+        <input type="number" value="9" id="count">
+        <label>Enter the number of items</label>
+        <br>
+        <input type="number" value="5" id="reductions">
+        <label>Enter the discount percent</label>
+        <br>
+        <input type="button" value="Show total" onclick="discount()">
+    </form>
+
+
+    <p id="result">This text will be replaced </p>
+
+    <script>
+        function discount(){
+            price = document.getElementById("price").value
+            count = document.getElementById("count").value
+            reduction = parseInt(document.getElementById("reductions").value)
+            myOuput = ""
+            out = document.getElementById("result")
+
+            for(let i = 0; i < 5; i++){
+                newDiscount = reduction + i
+                total = price * count
+                discountNum = total * newDiscount/100
+                calculatedPrice = total - discountNum
+                myOuput += newDiscount + "%" + " is " + calculatedPrice + "; "
+            }
+            out.innerHTML = "Totals are: " + myOuput
+        }
+    </script>
+
+</body>
+</html> 
