@@ -60,9 +60,30 @@
     <script>
 
         function chooseOp(id){
-            price = document.getElementById("price").value
-            discountNum = document.getElementById("reductions").value
+            price = parseInt(document.getElementById("price").value)
+            discountNum = parseInt(document.getElementById("reductions").value)
+            let total = 0;
+            out = document.getElementById("radioResult")
 
+            if(id == "sum"){
+                total = price + discountNum
+                out.innerHTML = "Sum of " + price + " and " + discountNum + " is " + total
+            }
+            else if(id == "mult"){
+                total = price * discountNum
+                out.innerHTML = "Product of " + price + " and " + discountNum + " is " + total
+            }
+            else{
+                for(let i = 0; i < discountNum; i++){
+                    if(i == 0){
+                        total = price
+                    }
+                    else{
+                        total *= price;
+                    }
+                }
+                out.innerHTML = price + " to the power of " + discountNum + " is " + total
+            }
         }
     </script>
 </body>
