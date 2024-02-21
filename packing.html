@@ -6,40 +6,106 @@
  </head>
 <body>
 
-<h2>Getting input</h2>
+    <h2>Getting input</h2>
 
-<form>
-    <input type="checkbox" value="True" id="light">
-    <label>Pack light</label>
+    <form>
+        <input type="checkbox" value="True" id="light">
+        <label>Pack light</label>
+        <br>
+        <input type="checkbox" value="True" id="carry">
+        <label>Carry on</label>
+        <br>
+        <input type="checkbox" value="False" id="tablet">
+        <label>Tablet</label>
+        <br>
+        <input type="button" value="Select for packing" onclick="selectPack()">
+    </form>
     <br>
-    <input type="checkbox" value="True" id="carry">
-    <label>Carry on</label>
-    <br>
-    <input type="checkbox" value="False" id="tablet">
-    <label>Tablet</label>
-    <br>
-    <input type="button" value="Select for packing" onclick="selectPack()">
-</form>
+    <form>
+        <input type="text" value="May" id="month">
+        <label>Enter travel month</label>
+        <br>
+        <input type="text" value="0" id="price">
+        <label>Enter price</label>
+        <br>
+        <input type="button" value="Update the pack" onclick="updatePack()">
+    </form>
 
 
-<p id="result">This text will be replaced </p>
+    <p id="result">This text will be replaced </p>
 
-<script> 
+    <script>
+        let my_pack = {}
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
+        lightVar = document.getElementById("light")
+        carryVar = document.getElementById("carry")
+        tabletVar = document.getElementById("tablet")
+
+        month = document.getElementById("month")
+        price = document.getElementById("price")
+
+        out = document.getElementById("result")
+
+        function selectPack(){
+            my_pack = {}
+            out.innerHTML = "No checkboxes checked"
+
+            if(lightVar.checked){
+                my_pack.light = "True"
+
+                if(carryVar.checked){
+                    my_pack.carry = "True"
+                    if(tabletVar.checked){
+                        my_pack.tablet = "False"
+                    }
+                }
+                else if(tabletVar.checked){
+                    my_pack.tablet = "False"
+                    if(carryVar.checked){
+                        my_pack.carry = "True"
+                    }
+                }
+                out.innerHTML = JSON.stringify(my_pack)
+            }
+            else if(carryVar.checked){
+                my_pack.carry = "True"
+                if(lightVar.checked){
+                    my_pack.light = "True"
+                    if(tabletVar.checked){
+                        my_pack.tablet = "False"
+                    }
+                }
+                else if(tabletVar.checked){
+                    my_pack.tablet = "False"
+                    if(lightVar.checked){
+                        my_pack.light = "True"
+                    }
+                }
+                out.innerHTML = JSON.stringify(my_pack)
+            }
+            else if(tabletVar.checked){
+                my_pack.tablet = "False"
+                if(lightVar.checked){
+                    my_pack.light = "True"
+                    if(carryVar.checked){
+                        my_pack.carry = "True"
+                    }
+                }
+                else if(carryVar.checked){
+                    my_pack.carry = "True"
+                    if(lightVar.checked){
+                        my_pack.light = "True"
+                    }
+                }
+                out.innerHTML = JSON.stringify(my_pack)
+            }
+
+        }
+
+        function updatePack(){
+
+        }
+    </script>
 
 </body>
 </html> 
