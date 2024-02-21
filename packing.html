@@ -33,6 +33,7 @@
 
 
     <p id="result">This text will be replaced </p>
+    <p id="packform">This text will be replaced </p>
 
     <script>
         let my_pack = {}
@@ -40,9 +41,6 @@
         lightVar = document.getElementById("light")
         carryVar = document.getElementById("carry")
         tabletVar = document.getElementById("tablet")
-
-        month = document.getElementById("month")
-        price = document.getElementById("price")
 
         out = document.getElementById("result")
 
@@ -103,7 +101,12 @@
         }
 
         function updatePack(){
+            month = document.getElementById("month").value
+            price = document.getElementById("price").value
 
+            my_pack['month'] = month
+            my_pack['price'] = price
+            out.innerHTML = JSON.stringify(my_pack)
         }
     </script>
 
